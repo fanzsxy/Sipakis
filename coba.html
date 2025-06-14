@@ -3,7 +3,7 @@
 <head>
   <!-- Pengaturan karakter dan tampilan responsive -->
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Dashboard Pakan Ikan Otomatis</title>
 
   <!-- Import Tailwind CSS -->
@@ -20,7 +20,6 @@
   <style>
     body {
       font-family: 'Poppins', sans-serif;
-      font-size: 14px;
     }
 
     /* Animasi slide masuk untuk alert */
@@ -36,166 +35,111 @@
     table tbody tr:nth-child(even) {
       background-color: #f9fafb;
     }
-
-    /* Mobile menu styles */
-    .mobile-menu {
-      display: none;
-    }
-    .mobile-menu.active {
-      display: block;
-    }
-
-    /* Responsive table */
-    .responsive-table {
-      width: 100%;
-      overflow-x: auto;
-    }
-
-    @media (max-width: 640px) {
-      body {
-        padding-bottom: 100px;
-      }
-      table {
-        font-size: 12px;
-      }
-      th, td {
-        padding: 6px 4px;
-      }
-    }
   </style>
 </head>
 <body class="bg-gray-100 pb-24">
 
   <!-- ========== HEADER / NAVBAR ========== -->
   <header class="bg-blue-600 text-white shadow-md sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex justify-between items-center">
-      <div class="flex items-center space-x-2">
-        <img src="SIPAKIS-removebg-preview.png" alt="Logo Ikan" class="w-8 h-8" />
-        <h1 class="text-lg sm:text-2xl font-bold">Sipakis</h1>
-      </div>
-      
-      <!-- Desktop Navigation -->
-      <nav class="hidden md:flex space-x-6 items-center">
-        <a href="landing_page.html#fitur" class="hover:text-gray-300 text-sm sm:text-base">Fitur</a>
-        <a href="landing_page.html#tentang" class="hover:text-gray-300 text-sm sm:text-base">Tentang</a>
-        <a href="landing_page.html#testimoni" class="hover:text-gray-300 text-sm sm:text-base">Testimoni</a>
-        <!-- Profil Dropdown -->
-        <div class="relative">
-          <button id="profileDropdownBtn" class="bg-white text-blue-600 px-3 py-1 sm:px-4 sm:py-2 rounded hover:bg-gray-100 flex items-center space-x-1 sm:space-x-2 text-sm sm:text-base">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 sm:h-5 sm:w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A10.96 10.96 0 0112 15c2.485 0 4.77.895 6.879 2.379M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-            </svg>
-            <span>Profil</span>
-          </button>
-          <div id="profileDropdown" class="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg hidden z-50">
-            <div class="px-4 py-2 text-sm text-gray-700 border-b" id="profileName">Nama Akun</div>
-            <button id="btnLogout" class="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-gray-100">Logout</button>
-          </div>
-        </div>
-      </nav>
-      
-      <!-- Mobile Menu Button -->
-      <button id="mobileMenuButton" class="md:hidden text-white focus:outline-none">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-        </svg>
-      </button>
+  <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+    <div class="flex items-center space-x-3">
+      <img src="SIPAKIS-removebg-preview.png" alt="Logo Ikan" class="w-10 h-10" />
+      <h1 class="text-2xl font-bold">Sipakis</h1>
     </div>
-    
-    <!-- Mobile Menu -->
-    <div id="mobileMenu" class="mobile-menu md:hidden bg-blue-700 pb-3 px-4">
-      <div class="flex flex-col space-y-3">
-        <a href="landing_page.html#fitur" class="text-white hover:text-gray-300 py-1">Fitur</a>
-        <a href="landing_page.html#tentang" class="text-white hover:text-gray-300 py-1">Tentang</a>
-        <a href="landing_page.html#testimoni" class="text-white hover:text-gray-300 py-1">Testimoni</a>
-        <div class="pt-2 border-t border-blue-600">
-          <button id="profileDropdownBtnMobile" class="bg-white text-blue-600 px-3 py-1 rounded hover:bg-gray-100 flex items-center space-x-2 w-full justify-center">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A10.96 10.96 0 0112 15c2.485 0 4.77.895 6.879 2.379M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-            </svg>
-            <span>Profil</span>
-          </button>
-          <div id="profileDropdownMobile" class="mt-2 bg-white rounded-lg shadow-lg hidden">
-            <div class="px-4 py-2 text-sm text-gray-700 border-b" id="profileNameMobile">Nama Akun</div>
-            <button id="btnLogoutMobile" class="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-gray-100">Logout</button>
-          </div>
+    <nav class="hidden md:flex space-x-6">
+      <a href="landing_page.html#fitur" class="hover:text-gray-300">Fitur</a>
+      <a href="landing_page.html#tentang" class="hover:text-gray-300">Tentang</a>
+      <a href="landing_page.html#testimoni" class="hover:text-gray-300">Testimoni</a>
+      <!-- Profil Dropdown -->
+      <div class="relative">
+        <button id="profileDropdownBtn" class="bg-white text-blue-600 px-4 py-2 rounded hover:bg-gray-100 flex items-center space-x-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A10.96 10.96 0 0112 15c2.485 0 4.77.895 6.879 2.379M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+          </svg>
+          <span>Profil</span>
+          <svg class="h-4 w-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+        <div id="profileDropdown" class="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg hidden z-50">
+          <div class="px-4 py-2 text-sm text-gray-700 border-b" id="profileName">Nama Akun</div>
+          <button id="btnLogout" class="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-gray-100">Logout</button>
         </div>
       </div>
-    </div>
-  </header>
+    </nav>
+  </div>
+</header>
 
   <!-- ========== NOTIFIKASI PAKAN HABIS ========== -->
-  <div id="notifikasiPakanHabis" class="hidden fixed top-4 left-1/2 transform -translate-x-1/2 px-4 py-3 sm:px-6 sm:py-4 bg-red-600 text-white text-xs sm:text-sm rounded-lg shadow-lg z-50 flex items-center space-x-2 sm:space-x-3 max-w-[90%]">
-    <svg class="w-5 h-5 sm:w-6 sm:h-6 text-white animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+  <div id="notifikasiPakanHabis" class="hidden fixed top-4 left-1/2 transform -translate-x-1/2 px-6 py-4 bg-red-600 text-white text-sm rounded-lg shadow-lg z-50 flex items-center space-x-3">
+    <svg class="w-6 h-6 text-white animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01M12 17a5 5 0 100-10 5 5 0 000 10z" />
     </svg>
     <span class="font-semibold">Pakan habis! Silakan isi ulang wadah pakan.</span>
   </div>
 
   <!-- ========== MAIN CONTENT ========== -->
-  <main class="p-3 sm:p-6 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+  <main class="p-6 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
 
     <!-- Informasi Jumlah Pakan -->
-    <div class="bg-white border border-gray-200 rounded-xl sm:rounded-2xl shadow-sm p-3 sm:p-6 hover:shadow-md transition-shadow">
-      <h2 class="text-base sm:text-xl font-semibold mb-3 sm:mb-4">Jumlah Pakan Tersisa</h2>
-      <div id="jumlahPakan" class="text-2xl sm:text-4xl font-bold text-success">--</div>
+    <div class="bg-white border border-gray-200 rounded-2xl shadow-sm p-6 hover:shadow-md transition-shadow">
+      <h2 class="text-xl font-semibold mb-4">Jumlah Pakan Tersisa</h2>
+      <div id="jumlahPakan" class="text-4xl font-bold text-success">--</div>
     </div>
 
     <!-- Informasi Jadwal Pakan Berikutnya -->
-    <div class="bg-white border border-gray-200 rounded-xl sm:rounded-2xl shadow-sm p-3 sm:p-6 hover:shadow-md transition-shadow">
-      <h2 class="text-base sm:text-xl font-semibold mb-3 sm:mb-4">Jadwal Pemberian Pakan Berikutnya</h2>
-      <div id="jadwalBerikutnya" class="text-lg sm:text-2xl">--</div>
+    <div class="bg-white border border-gray-200 rounded-2xl shadow-sm p-6 hover:shadow-md transition-shadow">
+      <h2 class="text-xl font-semibold mb-4">Jadwal Pemberian Pakan Berikutnya</h2>
+      <div id="jadwalBerikutnya" class="text-2xl">--</div>
     </div>
 
     <!-- Riwayat pemberian pakan -->
-    <div class="col-span-1 md:col-span-2 bg-white border border-gray-200 rounded-xl sm:rounded-2xl shadow-sm p-3 sm:p-6">
-      <h2 class="text-base sm:text-xl font-semibold mb-3 sm:mb-4">Riwayat Pemberian Pakan</h2>
-      <div class="responsive-table">
-        <table class="w-full table-auto text-xs sm:text-sm text-left">
-          <thead class="bg-gray-100 text-gray-800 font-semibold">
-            <tr>
-              <th class="px-2 sm:px-4 py-2">Tanggal</th>
-              <th class="px-2 sm:px-4 py-2">Jam</th>
-              <th class="px-2 sm:px-4 py-2">Status</th>
-              <th class="px-2 sm:px-4 py-2">Aksi</th>
-            </tr>
-          </thead>
-          <tbody id="riwayatTabel"></tbody> <!-- Data akan diisi lewat Firebase -->
-        </table>
-      </div>
-      <div id="paginationRiwayat" class="flex justify-center mt-3 sm:mt-4 space-x-1 sm:space-x-2"></div>
+    <div class="col-span-1 md:col-span-2 bg-white border border-gray-200 rounded-2xl shadow-sm p-6">
+      <h2 class="text-xl font-semibold mb-4">Riwayat Pemberian Pakan</h2>
+      <table class="w-full table-auto text-sm text-left">
+        <thead class="bg-gray-100 text-gray-800 font-semibold">
+          <tr>
+            <th class="px-4 py-2">Tanggal</th>
+            <th class="px-4 py-2">Jam</th>
+            <th class="px-4 py-2">Status</th>
+            <th class="px-4 py-2">Aksi</th>
+          </tr>
+        </thead>
+        <tbody id="riwayatTabel"></tbody> <!-- Data akan diisi lewat Firebase -->
+      </table>
+      <div id="paginationRiwayat" class="flex justify-center mt-4 space-x-2"></div>
+
     </div>
 
     <!-- Form untuk menambah jadwal + tabel daftar jadwal -->
-    <div class="col-span-1 md:col-span-2 bg-white border border-gray-200 p-3 sm:p-6 rounded-xl sm:rounded-2xl shadow-sm mt-4 sm:mt-6">
-      <h2 class="text-base sm:text-xl font-semibold mb-3 sm:mb-4">Manajemen Jadwal Pemberian Pakan</h2>
+    <div class="col-span-1 md:col-span-2 bg-white border border-gray-200 p-6 rounded-2xl shadow-sm mt-6">
+      <h2 class="text-xl font-semibold mb-4">Manajemen Jadwal Pemberian Pakan</h2>
 
       <!-- Form tambah jadwal -->
-      <form id="formJadwal" class="grid grid-cols-1 md:grid-cols-3 gap-3 sm:gap-4 mb-4 sm:mb-6 items-center">
+      <form id="formJadwal" class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 items-center">
         <div>
-          <label class="block text-xs sm:text-sm font-medium text-gray-700">Waktu</label>
-          <input type="time" id="waktuInput" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm text-center text-xs sm:text-sm p-2" required />
+          <label class="block text-sm font-medium text-gray-700">Waktu</label>
+          <input type="time" id="waktuInput" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm text-center" required />
         </div>
-        <div class="flex justify-start space-x-2 md:col-span-2 mt-3 sm:mt-0">
-          <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 px-1 sm:px-2 rounded-md transition-colors text-xs sm:text-sm">Tambah Jadwal</button>
-          <button type="button" id="pakanSekarang" class="w-full bg-green-600 hover:bg-green-700 text-white py-2 px-1 sm:px-2 rounded-md transition-colors text-xs sm:text-sm">Pakan Sekarang</button>
+        <div class="flex justify-start space-x-2 md:col-span-2 mt-4 md:mt-0">
+          <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-md transition-colors">Tambah Jadwal</button>
+          <button type="button" id="pakanSekarang" class="w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded-md transition-colors">Pakan Sekarang</button>
         </div>
       </form>
 
       <!-- Tabel daftar jadwal aktif -->
-      <div class="responsive-table">
-        <table class="w-full table-auto text-xs sm:text-sm text-center">
-          <thead class="bg-gray-100 text-gray-800 font-semibold">
-            <tr>
-              <th class="px-2 sm:px-4 py-2">Waktu</th>
-              <th class="px-2 sm:px-4 py-2">Status</th>
-              <th class="px-2 sm:px-4 py-2">Aksi</th>
-            </tr>
-          </thead>
-          <tbody id="jadwalTabel"></tbody> <!-- Data jadwal dari Firebase -->
-        </table>
-      </div>
-      <div id="paginationJadwal" class="flex justify-center mt-3 sm:mt-4 space-x-1 sm:space-x-2"></div>
+      <table class="w-full table-auto text-sm text-center">
+        <thead class="bg-gray-100 text-gray-800 font-semibold">
+          <tr>
+            <th class="px-4 py-2">Waktu</th>
+            <th class="px-4 py-2">Status</th>
+            <th class="px-4 py-2">Aksi</th>
+          </tr>
+        </thead>
+        <tbody id="jadwalTabel"></tbody> <!-- Data jadwal dari Firebase -->
+      </table>
+      <div id="paginationJadwal" class="flex justify-center mt-4 space-x-2"></div>
+
     </div>
   </main>
 
@@ -250,10 +194,6 @@
     window.location.href = "login.html";
   });
 
-  document.getElementById("btnLogoutMobile").addEventListener("click", async () => {
-    await signOut(auth);
-    window.location.href = "login.html";
-  });
 
   // Toggle dropdown profil
   const profileBtn = document.getElementById("profileDropdownBtn");
@@ -270,7 +210,7 @@
     }
   });
 
-// Tampilkan nama akun di dropdown desktop & mobile
+  // Tampilkan nama akun di dropdown
 onAuthStateChanged(auth, (user) => {
   if (!user) {
     window.location.href = "login.html";
@@ -278,31 +218,11 @@ onAuthStateChanged(auth, (user) => {
     document.body.style.display = "block";
 
     const profileName = document.getElementById("profileName");
-    const profileNameMobile = document.getElementById("profileNameMobile");
-
-    const name = user.displayName || user.email || "Pengguna";
-
-    profileName.textContent = name;
-    profileNameMobile.textContent = name;
+    profileName.textContent = user.displayName || user.email || "Pengguna";
 
     loadDashboardData();
   }
 });
-
-
- // Mobile menu toggle
-    document.getElementById('mobileMenuButton').addEventListener('click', function() {
-      const mobileMenu = document.getElementById('mobileMenu');
-      mobileMenu.classList.toggle('active');
-    });
-
-    // Profile dropdown for mobile
-    document.getElementById('profileDropdownBtnMobile').addEventListener('click', function() {
-      const dropdown = document.getElementById('profileDropdownMobile');
-      dropdown.classList.toggle('hidden');
-    });
-
-
 
 
   // Ambil elemen-elemen HTML yang akan dimanipulasi
